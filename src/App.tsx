@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const App = () => {
-  return (
-    <div>Welcome to AI Chat</div>
-  )
-}
+  return <div className="font-bold">Welcome to AI Chat</div>;
+};
 
-export default App
+export default App;
