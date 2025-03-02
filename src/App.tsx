@@ -1,7 +1,13 @@
-import React from "react";
+import Sidebar from "./components/Sidebar";
+import MainContent from "./components/MainContent";
 
 const App = () => {
-  return <div className="font-bold">Welcome to AI Chat</div>;
+  return (
+    <div className="flex min-h-screen bg-white animate-fadeIn">
+      <Sidebar />
+      <MainContent />
+    </div>
+  );
 };
 
 export default App;
