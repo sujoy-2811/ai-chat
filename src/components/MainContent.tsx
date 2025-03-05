@@ -4,6 +4,7 @@ import Card from "./Card";
 import Greeting from "./Greeting";
 import ChatInput from "./ChatInput";
 import ChatResult from "./ChatResult";
+import { askAIQuestion } from "../lib/ai";
 
 const MainContent = () => {
   const [input, setInput] = React.useState("");
@@ -18,11 +19,10 @@ const MainContent = () => {
     setShowResult(true);
     setLoading(true);
     // Delay for loading effect
-    setTimeout(() => {
+    setTimeout(async () => {
+      const response = await askAIQuestion({ prompt: input });
       setDummyResult(
-        "Here's a response to your query about " +
-          input +
-          ". \n\nGemini is a family of multimodal AI models developed by Google DeepMind. It is designed to be natively multimodal, meaning it can understand, operate on, and combine different types of information, including text, code, audio, image, and video."
+        response || "Sorry, I couldn't generate a response. Please try again."
       );
       setLoading(false);
     }, 1500);
