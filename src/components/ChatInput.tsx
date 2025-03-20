@@ -8,8 +8,8 @@ interface ChatInputProps {
 
 const ChatInput: React.FC<ChatInputProps> = ({ input, setInput, onSent }) => {
   return (
-    <div className="absolute bottom-0 w-full max-w-225 px-5 pb-5 bg-white">
-      <div className="flex items-center justify-between gap-5 bg-[#f0f4f9] py-2.5 px-5 rounded-full">
+    <div className="absolute bottom-0 w-full max-w-225 px-2.5 pb-2.5 sm:px-5 sm:pb-5 bg-white">
+      <div className="flex items-center justify-between gap-2.5 sm:gap-5 bg-[#f0f4f9] py-2.5 px-3 sm:px-5 rounded-full">
         <input
           type="text"
           placeholder="Enter a prompt here"

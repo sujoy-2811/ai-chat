@@ -1,12 +1,16 @@
 import React from "react";
-import { Compass, Lightbulb, Code, Youtube, User } from "lucide-react";
+import { Compass, Lightbulb, Code, Youtube, User, Menu } from "lucide-react";
 import Card from "./Card";
 import Greeting from "./Greeting";
 import ChatInput from "./ChatInput";
 import ChatResult from "./ChatResult";
 import { askAIQuestion } from "../lib/ai";
 
-const MainContent = () => {
+interface MainContentProps {
+  setMobileMenuOpen: (open: boolean) => void;
+}
+
+const MainContent: React.FC<MainContentProps> = ({ setMobileMenuOpen }) => {
   const [input, setInput] = React.useState("");
   const [showResult, setShowResult] = React.useState(false);
   const [dummyResult, setDummyResult] = React.useState<string | null>(null);
@@ -55,15 +59,21 @@ const MainContent = () => {
   return (
     <div className="flex-1 min-h-screen pb-[15vh] relative bg-white">
       <div className="flex items-center justify-between text-xl p-5 text-slate-700">
-        <p>Gemini</p>
+        <div className="flex items-center gap-4">
+          <Menu
+            className="md:hidden cursor-pointer"
+            onClick={() => setMobileMenuOpen(true)}
+          />
+          <p>Gemini</p>
+        </div>
         <User className="w-10 h-10 rounded-full bg-slate-200 p-2" />
       </div>
 
-      <div className="max-w-225 mx-auto">
+      <div className="max-w-225 mx-auto h-full relative">
         {!showResult ? (
           <>
             <Greeting />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5">
+            <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-4 gap-4 p-5">
               {suggestionCards.map((card, index) => (
                 <Card
                   key={index}
